@@ -23,7 +23,7 @@ export const Hero = () => {
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl font-inter">
-              Upload your story, and StoryNest brings it to life with expressive voices and adaptive soundscapes.
+              Upload your story, and VoiceTales brings it to life with expressive voices and adaptive soundscapes.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

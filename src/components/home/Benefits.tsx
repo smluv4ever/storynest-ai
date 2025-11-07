@@ -42,7 +42,7 @@ export const Benefits = () => {
         <div className="text-center mb-16 space-y-4">
           <h2 className="font-fredoka text-4xl sm:text-5xl font-bold">
             Why families love{" "}
-            <span className="bg-gradient-warm bg-clip-text text-transparent">StoryNest</span>
+            <span className="bg-gradient-warm bg-clip-text text-transparent">VoiceTales</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-inter">
             Every feature is designed to make storytelling magical, effortless, and emotionally rich.

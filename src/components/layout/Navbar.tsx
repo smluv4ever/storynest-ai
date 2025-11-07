@@ -15,7 +15,7 @@ export const Navbar = () => {
             <div className="w-10 h-10 rounded-xl bg-gradient-warm flex items-center justify-center group-hover:scale-110 transition-transform">
               <BookOpen className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className="font-fredoka text-2xl font-bold">StoryNest</span>
+            <span className="font-fredoka text-2xl font-bold">VoiceTales</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
