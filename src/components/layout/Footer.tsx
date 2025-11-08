@@ -1,9 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { BookOpen, Heart } from "lucide-react";
-
 export const Footer = () => {
-  return (
-    <footer className="bg-muted py-12 border-t border-border">
+  return <footer className="bg-muted py-12 border-t border-border">
       <Container>
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -11,7 +9,7 @@ export const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-gradient-warm flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-fredoka text-xl font-bold">VoiceTales</span>
+              <span className="font-fredoka text-xl font-bold">StoryNest</span>
             </div>
             <p className="text-sm text-muted-foreground font-inter">
               Bringing stories to life with warmth, wonder, and adaptive soundscapes.
@@ -47,14 +45,11 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground font-inter">
-            © 2024 VoiceTales. All rights reserved.
-          </p>
+          <p className="text-sm text-muted-foreground font-inter">© 2024 StoryNest. All rights reserved.</p>
           <p className="text-sm text-muted-foreground font-inter flex items-center gap-1">
             Made with <Heart className="w-4 h-4 text-accent fill-accent" /> for storytellers everywhere
           </p>
         </div>
       </Container>
-    </footer>
-  );
+    </footer>;
 };
