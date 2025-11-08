@@ -17,9 +17,8 @@ export const Hero = () => {
             <h1 className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
               Stories that{" "}
               <span className="bg-gradient-warm bg-clip-text text-transparent">
-                speak
-              </span>{" "}
-              — and sing.
+                speak & sing
+              </span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl font-inter">
