@@ -625,12 +625,12 @@ interface PlayerState {
 ### 1.8 Library Page
 
 #### 1.8.1 Story Library UI
-- [ ] Create `/library` page
-- [ ] Grid layout of story cards
-- [ ] Display: title, emotion, thumbnail, duration
-- [ ] Playback controls on each card
-- [ ] Filter by emotion
-- [ ] Sort by date created
+- [✅] Create `/library` page
+- [✅] Grid layout of story cards
+- [✅] Display: title, emotion, thumbnail, duration
+- [✅] Playback controls on each card
+- [✅] Filter by emotion
+- [✅] Sort by date created
 
 **Component Structure:**
 ```

@@ -1,37 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/layout/Navbar';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Story } from '@/types/Story';
-import { BookOpen, Clock, Music, Wand2 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Story, EmotionMode } from '@/types/Story';
+import { BookOpen, Wand2, ArrowUpDown } from 'lucide-react';
 import { toast } from 'sonner';
-import { PreviewPlayer } from '@/components/audio/PreviewPlayer';
+import { EmotionFilter } from '@/components/stories/EmotionFilter';
+import { StoryCard } from '@/components/stories/StoryCard';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
-const emotionEmojis: Record<string, string> = {
-  calm: '🌙',
-  gentle: '☀️',
-  playful: '🌈',
-  adventure: '🚀',
-  heartfelt: '💖',
-};
-
-const statusColors: Record<string, 'default' | 'secondary' | 'destructive' | 'outline'> = {
-  draft: 'outline',
-  processing: 'secondary',
-  completed: 'default',
-  failed: 'destructive',
-};
+type SortOption = 'newest' | 'oldest' | 'title';
 
 export default function Library() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [stories, setStories] = useState<Story[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedEmotion, setSelectedEmotion] = useState<EmotionMode | 'all'>('all');
+  const [sortBy, setSortBy] = useState<SortOption>('newest');
 
   useEffect(() => {
     if (user) {
@@ -57,23 +53,85 @@ export default function Library() {
     }
   };
 
-  const formatDuration = (seconds: number | null) => {
-    if (!seconds) return 'N/A';
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
+  // Calculate emotion counts
+  const emotionCounts = useMemo(() => {
+    const counts: Record<EmotionMode | 'all', number> = {
+      all: stories.length,
+      calm: 0,
+      gentle: 0,
+      playful: 0,
+      adventure: 0,
+      heartfelt: 0,
+    };
+    
+    stories.forEach((story) => {
+      counts[story.emotion]++;
+    });
+    
+    return counts;
+  }, [stories]);
+
+  // Filter and sort stories
+  const filteredAndSortedStories = useMemo(() => {
+    let filtered = selectedEmotion === 'all' 
+      ? stories 
+      : stories.filter(story => story.emotion === selectedEmotion);
+    
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'newest':
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        case 'oldest':
+          return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        case 'title':
+          return a.title.localeCompare(b.title);
+        default:
+          return 0;
+      }
+    });
+    
+    return sorted;
+  }, [stories, selectedEmotion, sortBy]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <Navbar />
       <Container className="py-12">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="font-fredoka text-4xl font-bold">Your Library</h1>
-          <Button onClick={() => navigate('/generate')} className="gap-2">
-            <Wand2 className="h-4 w-4" />
-            Create New Story
-          </Button>
+        <div className="flex flex-col gap-6 mb-8">
+          <div className="flex justify-between items-center">
+            <h1 className="font-fredoka text-4xl font-bold">Your Library</h1>
+            <Button onClick={() => navigate('/generate')} className="gap-2">
+              <Wand2 className="h-4 w-4" />
+              Create New Story
+            </Button>
+          </div>
+
+          {/* Filters and Sort */}
+          {stories.length > 0 && (
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+              <div className="w-full sm:w-auto">
+                <EmotionFilter
+                  selected={selectedEmotion}
+                  onSelect={setSelectedEmotion}
+                  counts={emotionCounts}
+                />
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+                <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Sort by..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="newest">Newest First</SelectItem>
+                    <SelectItem value="oldest">Oldest First</SelectItem>
+                    <SelectItem value="title">Title (A-Z)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          )}
         </div>
 
         {loading ? (
@@ -92,71 +150,18 @@ export default function Library() {
               </Button>
             </CardContent>
           </Card>
+        ) : filteredAndSortedStories.length === 0 && selectedEmotion !== 'all' ? (
+          <Card className="border-2 border-dashed">
+            <CardContent className="p-12 text-center">
+              <p className="text-muted-foreground font-inter">
+                No stories found with this emotion. Try a different filter!
+              </p>
+            </CardContent>
+          </Card>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {stories.map((story) => (
-              <Card key={story.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex-1">
-                      <CardTitle className="text-xl font-fredoka line-clamp-2">
-                        {story.title}
-                      </CardTitle>
-                      <CardDescription className="mt-2">
-                        {new Date(story.created_at).toLocaleDateString()}
-                      </CardDescription>
-                    </div>
-                    <span className="text-3xl">{emotionEmojis[story.emotion]}</span>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant={statusColors[story.status]}>
-                      {story.status}
-                    </Badge>
-                    {story.music_theme && (
-                      <Badge variant="outline" className="gap-1">
-                        <Music className="h-3 w-3" />
-                        {story.music_theme}
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* Audio Player - shown only for completed stories */}
-                  {story.status === 'completed' && (
-                    <PreviewPlayer 
-                      audioUrl={story.audio_url}
-                      backgroundMusicEnabled={story.background_music_enabled}
-                    />
-                  )}
-
-                  {/* Story Metadata */}
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <BookOpen className="h-3 w-3" />
-                      {story.word_count?.toLocaleString()} words
-                    </span>
-                    {story.duration_seconds && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {formatDuration(story.duration_seconds)}
-                      </span>
-                    )}
-                  </div>
-
-                  {story.narrator_detected && (
-                    <p className="text-xs text-muted-foreground">
-                      Narrator: {story.narrator_detected}
-                    </p>
-                  )}
-
-                  {story.characters && story.characters.length > 0 && (
-                    <p className="text-xs text-muted-foreground">
-                      Characters: {story.characters.join(', ')}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+            {filteredAndSortedStories.map((story) => (
+              <StoryCard key={story.id} story={story} />
             ))}
           </div>
         )}
