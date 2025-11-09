@@ -1,10 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { BookOpen, Menu } from "lucide-react";
+import { BookOpen, Menu, LogOut } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
+
   return <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <Container>
         <div className="flex items-center justify-between h-16">
@@ -22,15 +31,26 @@ export const Navbar = () => {
             <Link to="/pricing" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
               Pricing
             </Link>
-            <Link to="/dashboard" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/library" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
-              Library
-            </Link>
-            <Button className="bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
-              Get Started
-            </Button>
+            {user && (
+              <>
+                <Link to="/dashboard" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Dashboard
+                </Link>
+                <Link to="/library" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Library
+                </Link>
+              </>
+            )}
+            {user ? (
+              <Button onClick={handleSignOut} variant="outline" className="rounded-xl font-fredoka">
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button asChild className="bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
+                <Link to="/auth">Get Started</Link>
+              </Button>
+            )}
           </div>
 
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -45,15 +65,26 @@ export const Navbar = () => {
             <Link to="/pricing" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
               Pricing
             </Link>
-            <Link to="/dashboard" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/library" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
-              Library
-            </Link>
-            <Button className="w-full bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
-              Get Started
-            </Button>
+            {user && (
+              <>
+                <Link to="/dashboard" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Dashboard
+                </Link>
+                <Link to="/library" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Library
+                </Link>
+              </>
+            )}
+            {user ? (
+              <Button onClick={handleSignOut} variant="outline" className="w-full rounded-xl font-fredoka">
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button asChild className="w-full bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
+                <Link to="/auth">Get Started</Link>
+              </Button>
+            )}
           </div>}
       </Container>
     </nav>;
