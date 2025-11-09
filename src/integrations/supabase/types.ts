@@ -41,6 +41,80 @@ export type Database = {
         }
         Relationships: []
       }
+      stories: {
+        Row: {
+          audio_url: string | null
+          background_music_enabled: boolean | null
+          characters: Json | null
+          content: string
+          created_at: string
+          duration_seconds: number | null
+          emotion: Database["public"]["Enums"]["emotion_mode"]
+          id: string
+          max_free_replays: number | null
+          music_theme: string | null
+          narrator_detected: string | null
+          replay_count: number | null
+          sound_effects_enabled: boolean | null
+          status: string | null
+          title: string
+          updated_at: string
+          user_id: string
+          voice_profile_id: string | null
+          word_count: number | null
+        }
+        Insert: {
+          audio_url?: string | null
+          background_music_enabled?: boolean | null
+          characters?: Json | null
+          content: string
+          created_at?: string
+          duration_seconds?: number | null
+          emotion?: Database["public"]["Enums"]["emotion_mode"]
+          id?: string
+          max_free_replays?: number | null
+          music_theme?: string | null
+          narrator_detected?: string | null
+          replay_count?: number | null
+          sound_effects_enabled?: boolean | null
+          status?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+          voice_profile_id?: string | null
+          word_count?: number | null
+        }
+        Update: {
+          audio_url?: string | null
+          background_music_enabled?: boolean | null
+          characters?: Json | null
+          content?: string
+          created_at?: string
+          duration_seconds?: number | null
+          emotion?: Database["public"]["Enums"]["emotion_mode"]
+          id?: string
+          max_free_replays?: number | null
+          music_theme?: string | null
+          narrator_detected?: string | null
+          replay_count?: number | null
+          sound_effects_enabled?: boolean | null
+          status?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          voice_profile_id?: string | null
+          word_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stories_voice_profile_id_fkey"
+            columns: ["voice_profile_id"]
+            isOneToOne: false
+            referencedRelation: "voice_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -62,6 +136,45 @@ export type Database = {
         }
         Relationships: []
       }
+      voice_profiles: {
+        Row: {
+          accent: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_default: boolean | null
+          name: string
+          pitch: string | null
+          sample_audio_url: string | null
+          tone: string | null
+          user_id: string
+        }
+        Insert: {
+          accent?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean | null
+          name: string
+          pitch?: string | null
+          sample_audio_url?: string | null
+          tone?: string | null
+          user_id: string
+        }
+        Update: {
+          accent?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_default?: boolean | null
+          name?: string
+          pitch?: string | null
+          sample_audio_url?: string | null
+          tone?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -77,6 +190,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      emotion_mode: "calm" | "gentle" | "playful" | "adventure" | "heartfelt"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -205,6 +319,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      emotion_mode: ["calm", "gentle", "playful", "adventure", "heartfelt"],
     },
   },
 } as const
