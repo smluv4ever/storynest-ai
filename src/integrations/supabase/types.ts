@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      audio_tracks: {
+        Row: {
+          created_at: string
+          description: string | null
+          duration_seconds: number | null
+          emotion_tags: Database["public"]["Enums"]["emotion_mode"][]
+          file_url: string
+          id: string
+          is_active: boolean | null
+          keywords: string[] | null
+          license: string | null
+          name: string
+          source: string | null
+          type: Database["public"]["Enums"]["audio_type"]
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          emotion_tags: Database["public"]["Enums"]["emotion_mode"][]
+          file_url: string
+          id?: string
+          is_active?: boolean | null
+          keywords?: string[] | null
+          license?: string | null
+          name: string
+          source?: string | null
+          type: Database["public"]["Enums"]["audio_type"]
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          emotion_tags?: Database["public"]["Enums"]["emotion_mode"][]
+          file_url?: string
+          id?: string
+          is_active?: boolean | null
+          keywords?: string[] | null
+          license?: string | null
+          name?: string
+          source?: string | null
+          type?: Database["public"]["Enums"]["audio_type"]
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -190,6 +235,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      audio_type: "music" | "effect"
       emotion_mode: "calm" | "gentle" | "playful" | "adventure" | "heartfelt"
     }
     CompositeTypes: {
@@ -319,6 +365,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      audio_type: ["music", "effect"],
       emotion_mode: ["calm", "gentle", "playful", "adventure", "heartfelt"],
     },
   },

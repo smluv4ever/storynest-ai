@@ -200,7 +200,7 @@ export const signupSchema = z.object({
 ### 1.3 Story Management Database
 
 #### 1.3.1 Stories Table
-- [ ] Create stories table with emotional metadata
+- [✅] Create stories table with emotional metadata
 
 **SQL Migration:**
 ```sql
@@ -288,7 +288,7 @@ create index stories_emotion_idx on public.stories(emotion);
 ```
 
 #### 1.3.2 Voice Profiles Table (for V1 voice cloning)
-- [ ] Create voice_profiles table (foundation for V1)
+- [✅] Create voice_profiles table (foundation for V1)
 
 **SQL Migration:**
 ```sql
@@ -332,7 +332,7 @@ with check (user_id = auth.uid());
 ### 1.4 Music & Audio Tracks Library
 
 #### 1.4.1 Audio Tracks Table
-- [ ] Create audio_tracks table for background music and SFX
+- [✅] Create audio_tracks table for background music and SFX
 
 **SQL Migration:**
 ```sql
@@ -384,7 +384,7 @@ create index audio_tracks_type_idx on public.audio_tracks(type);
 ```
 
 #### 1.4.2 Storage Buckets
-- [ ] Create storage bucket for audio files
+- [✅] Create storage bucket for audio files
 
 **SQL Migration:**
 ```sql
