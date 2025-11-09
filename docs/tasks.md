@@ -425,9 +425,9 @@ with check (bucket_id = 'generated-audio');
 ```
 
 #### 1.4.3 Seed Initial Music Library
-- [ ] Add 7 placeholder tracks per emotion mode (35 total)
-- [ ] Download from Pixabay and upload to Supabase Storage
-- [ ] Insert metadata into audio_tracks table
+- [✅] Add 7 placeholder tracks per emotion mode (35 total)
+- [✅] Create SQL seed script with metadata
+- [ ] Download actual music from Pixabay and upload to Supabase Storage (manual step)
 
 **Data Insert Example:**
 ```sql
