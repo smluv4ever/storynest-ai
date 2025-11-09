@@ -583,13 +583,13 @@ verify_jwt = true
 
 ### 1.8 Audio Playback & Preview
 
-#### 1.7.1 Preview Player Component
-- [ ] Create PreviewPlayer component
-- [ ] Play/pause controls
-- [ ] Progress bar with time display
-- [ ] Volume control
-- [ ] Toggle: Voice-only vs Voice + Background Music
-- [ ] Visual feedback while playing
+#### 1.8.1 Preview Player Component
+- [✅] Create PreviewPlayer component
+- [✅] Play/pause controls
+- [✅] Progress bar with time display
+- [✅] Volume control
+- [✅] Toggle: Voice-only vs Voice + Background Music
+- [✅] Visual feedback while playing
 
 **Component Structure:**
 ```

@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Story } from '@/types/Story';
 import { BookOpen, Clock, Music, Wand2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { PreviewPlayer } from '@/components/audio/PreviewPlayer';
 
 const emotionEmojis: Record<string, string> = {
   calm: '🌙',
@@ -121,10 +122,15 @@ export default function Library() {
                     )}
                   </div>
 
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {story.content}
-                  </p>
+                  {/* Audio Player - shown only for completed stories */}
+                  {story.status === 'completed' && (
+                    <PreviewPlayer 
+                      audioUrl={story.audio_url}
+                      backgroundMusicEnabled={story.background_music_enabled}
+                    />
+                  )}
 
+                  {/* Story Metadata */}
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <BookOpen className="h-3 w-3" />
@@ -149,16 +155,6 @@ export default function Library() {
                       Characters: {story.characters.join(', ')}
                     </p>
                   )}
-
-                  <div className="pt-2">
-                    <Button 
-                      variant="outline" 
-                      className="w-full"
-                      disabled={story.status !== 'completed'}
-                    >
-                      {story.status === 'completed' ? 'Play Story' : 'Processing...'}
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             ))}
