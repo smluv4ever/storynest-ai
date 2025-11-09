@@ -19,6 +19,9 @@ export const Navbar = () => {
             <Link to="/" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
               Home
             </Link>
+            <Link to="/pricing" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+              Pricing
+            </Link>
             <Link to="/dashboard" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
               Dashboard
             </Link>
@@ -38,6 +41,9 @@ export const Navbar = () => {
         {isOpen && <div className="md:hidden py-4 space-y-4 border-t border-border">
             <Link to="/" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
               Home
+            </Link>
+            <Link to="/pricing" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+              Pricing
             </Link>
             <Link to="/dashboard" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
               Dashboard
