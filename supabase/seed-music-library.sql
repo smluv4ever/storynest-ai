@@ -1,10 +1,10 @@
--- Seed Music Library with 35 tracks (7 per emotion mode)
+-- Seed Music Library with 50 tracks (10 per emotion mode)
 -- Run this in Supabase SQL Editor to populate the audio_tracks table
 -- These use placeholder URLs - replace with actual Pixabay downloads uploaded to Storage
 
 INSERT INTO public.audio_tracks (type, name, description, file_url, emotion_tags, keywords, source, license, duration_seconds)
 VALUES
-  -- CALM tracks (🌙) - 7 tracks
+  -- CALM tracks (🌙) - 10 tracks
   ('music', 'Lullaby Garden', 'Soft piano melody for peaceful bedtime', 
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/calm/lullaby-garden.mp3',
    ARRAY['calm']::emotion_mode[], ARRAY['piano', 'night', 'sleep', 'peaceful'], 'pixabay', 'Public Domain', 180),
@@ -32,8 +32,20 @@ VALUES
   ('music', 'Twilight Breeze', 'Gentle wind chimes and flute',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/calm/twilight-breeze.mp3',
    ARRAY['calm']::emotion_mode[], ARRAY['wind', 'chimes', 'flute'], 'pixabay', 'Public Domain', 175),
+  
+  ('music', 'Night Rain', 'Soft rain sounds with gentle piano',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/calm/night-rain.mp3',
+   ARRAY['calm']::emotion_mode[], ARRAY['rain', 'piano', 'relaxing'], 'pixabay', 'Public Domain', 205),
+  
+  ('music', 'Ocean Lullaby', 'Gentle waves with soft strings',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/calm/ocean-lullaby.mp3',
+   ARRAY['calm']::emotion_mode[], ARRAY['ocean', 'waves', 'lullaby'], 'pixabay', 'Public Domain', 185),
+  
+  ('music', 'Sleepy Hollow', 'Minimalist ambient for deep sleep',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/calm/sleepy-hollow.mp3',
+   ARRAY['calm']::emotion_mode[], ARRAY['ambient', 'sleep', 'minimal'], 'pixabay', 'Public Domain', 220),
 
-  -- GENTLE tracks (☀️) - 7 tracks
+  -- GENTLE tracks (☀️) - 10 tracks
   ('music', 'Sunny Morning', 'Uplifting acoustic melody',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/gentle/sunny-morning.mp3',
    ARRAY['gentle']::emotion_mode[], ARRAY['morning', 'uplifting', 'acoustic'], 'pixabay', 'Public Domain', 185),
@@ -61,8 +73,20 @@ VALUES
   ('music', 'Soft Sunlight', 'Delicate piano with nature',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/gentle/soft-sunlight.mp3',
    ARRAY['gentle']::emotion_mode[], ARRAY['piano', 'sunlight', 'nature'], 'pixabay', 'Public Domain', 190),
+  
+  ('music', 'Morning Dew', 'Fresh acoustic with light percussion',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/gentle/morning-dew.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['acoustic', 'morning', 'fresh'], 'pixabay', 'Public Domain', 165),
+  
+  ('music', 'Peaceful Day', 'Calm guitar with birds chirping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/gentle/peaceful-day.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['guitar', 'birds', 'peaceful'], 'pixabay', 'Public Domain', 178),
+  
+  ('music', 'Meadow Walk', 'Soft flute with nature ambience',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/gentle/meadow-walk.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['flute', 'meadow', 'nature'], 'pixabay', 'Public Domain', 188),
 
-  -- PLAYFUL tracks (🌈) - 7 tracks
+  -- PLAYFUL tracks (🌈) - 10 tracks
   ('music', 'Sunny Parade', 'Upbeat ukulele and claps',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/playful/sunny-parade.mp3',
    ARRAY['playful']::emotion_mode[], ARRAY['ukulele', 'upbeat', 'happy'], 'pixabay', 'Public Domain', 140),
@@ -90,8 +114,20 @@ VALUES
   ('music', 'Joyful Jump', 'Happy accordion and tambourine',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/playful/joyful-jump.mp3',
    ARRAY['playful']::emotion_mode[], ARRAY['accordion', 'tambourine', 'joyful'], 'pixabay', 'Public Domain', 148),
+  
+  ('music', 'Silly Symphony', 'Fun kazoo and percussion',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/playful/silly-symphony.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['kazoo', 'silly', 'fun'], 'pixabay', 'Public Domain', 142),
+  
+  ('music', 'Happy Feet', 'Tap dancing rhythm with piano',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/playful/happy-feet.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['tap', 'rhythm', 'happy'], 'pixabay', 'Public Domain', 138),
+  
+  ('music', 'Carnival Joy', 'Festive calliope and bells',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/playful/carnival-joy.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['carnival', 'festive', 'calliope'], 'pixabay', 'Public Domain', 152),
 
-  -- ADVENTURE tracks (🚀) - 7 tracks
+  -- ADVENTURE tracks (🚀) - 10 tracks
   ('music', 'Forest Quest', 'Cinematic drums and strings',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/adventure/forest-quest.mp3',
    ARRAY['adventure']::emotion_mode[], ARRAY['cinematic', 'drums', 'epic'], 'pixabay', 'Public Domain', 220),
@@ -119,8 +155,20 @@ VALUES
   ('music', 'Hero March', 'Triumphant orchestral march',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/adventure/hero-march.mp3',
    ARRAY['adventure']::emotion_mode[], ARRAY['march', 'triumphant', 'hero'], 'pixabay', 'Public Domain', 205),
+  
+  ('music', 'Pirate Voyage', 'Nautical theme with accordion',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/adventure/pirate-voyage.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['pirate', 'nautical', 'accordion'], 'pixabay', 'Public Domain', 198),
+  
+  ('music', 'Castle Quest', 'Medieval orchestral with horns',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/adventure/castle-quest.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['medieval', 'castle', 'horns'], 'pixabay', 'Public Domain', 235),
+  
+  ('music', 'Wild Frontier', 'Western-style adventure theme',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/adventure/wild-frontier.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['western', 'frontier', 'adventure'], 'pixabay', 'Public Domain', 212),
 
-  -- HEARTFELT tracks (💖) - 7 tracks
+  -- HEARTFELT tracks (💖) - 10 tracks
   ('music', 'Home Again', 'Warm cello with soft piano',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/home-again.mp3',
    ARRAY['heartfelt']::emotion_mode[], ARRAY['cello', 'piano', 'home'], 'pixabay', 'Public Domain', 200),
@@ -147,4 +195,16 @@ VALUES
   
   ('music', 'Precious Moments', 'Delicate harp with soft chime',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/precious-moments.mp3',
-   ARRAY['heartfelt']::emotion_mode[], ARRAY['harp', 'chime', 'precious'], 'pixabay', 'Public Domain', 175);
+   ARRAY['heartfelt']::emotion_mode[], ARRAY['harp', 'chime', 'precious'], 'pixabay', 'Public Domain', 175),
+  
+  ('music', 'Tender Touch', 'Gentle acoustic with warmth',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/tender-touch.mp3',
+   ARRAY['heartfelt']::emotion_mode[], ARRAY['acoustic', 'tender', 'warm'], 'pixabay', 'Public Domain', 192),
+  
+  ('music', 'Together Always', 'Uplifting cello and piano duet',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/together-always.mp3',
+   ARRAY['heartfelt']::emotion_mode[], ARRAY['cello', 'piano', 'together'], 'pixabay', 'Public Domain', 188),
+  
+  ('music', 'Sweet Dreams', 'Comforting lullaby with strings',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/sweet-dreams.mp3',
+   ARRAY['heartfelt']::emotion_mode[], ARRAY['lullaby', 'comforting', 'strings'], 'pixabay', 'Public Domain', 182);
