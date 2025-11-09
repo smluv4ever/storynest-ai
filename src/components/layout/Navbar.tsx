@@ -36,6 +36,9 @@ export const Navbar = () => {
                 <Link to="/dashboard" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
                   Dashboard
                 </Link>
+                <Link to="/generate" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Generate
+                </Link>
                 <Link to="/library" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
                   Library
                 </Link>
@@ -69,6 +72,9 @@ export const Navbar = () => {
               <>
                 <Link to="/dashboard" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
                   Dashboard
+                </Link>
+                <Link to="/generate" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                  Generate
                 </Link>
                 <Link to="/library" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
                   Library

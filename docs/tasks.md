@@ -450,12 +450,12 @@ values
 ### 1.5 Story Upload & Input UI
 
 #### 1.5.1 Generate Page - Story Input
-- [ ] Create `/generate` page
-- [ ] Text input textarea (max 50,000 words)
-- [ ] File upload: PDF, TXT, PNG, GIF, JPEG (max 10MB)
-- [ ] Input validation with zod
-- [ ] Character counter
-- [ ] File type validation
+- [✅] Create `/generate` page
+- [✅] Text input textarea (max 50,000 words)
+- [✅] File upload: PDF, TXT, PNG, GIF, JPEG (max 10MB)
+- [✅] Input validation with zod
+- [✅] Character counter
+- [✅] File type validation
 
 **Component Structure:**
 ```
@@ -465,8 +465,7 @@ src/
 ├── components/
 │   ├── stories/
 │   │   ├── StoryUploader.tsx (file upload + text input)
-│   │   ├── FileUploadZone.tsx
-│   │   └── TextEditor.tsx
+│   │   └── EmotionalDial.tsx
 ```
 
 **Validation Schema:**
@@ -485,10 +484,10 @@ const storyInputSchema = z.object({
 ```
 
 #### 1.5.2 Emotional Dial Component
-- [ ] Create EmotionalDial component
-- [ ] 5 emotion modes with icons (🌙 Calm, ☀️ Gentle, 🌈 Playful, 🚀 Adventure, 💖 Heartfelt)
-- [ ] Visual selection UI
-- [ ] Persist selection in form state
+- [✅] Create EmotionalDial component
+- [✅] 5 emotion modes with icons (🌙 Calm, ☀️ Gentle, 🌈 Playful, 🚀 Adventure, 💖 Heartfelt)
+- [✅] Visual selection UI
+- [✅] Persist selection in form state
 
 **Component Reference:** `design-guidelines.md` lines 103-113
 
