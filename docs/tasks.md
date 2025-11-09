@@ -623,15 +623,17 @@ interface PlayerState {
 
 ---
 
-### 1.8 Library Page
+### 1.8 Library Page ✅
 
-#### 1.8.1 Story Library UI
+#### 1.8.1 Story Library UI ✅
 - [✅] Create `/library` page
 - [✅] Grid layout of story cards
 - [✅] Display: title, emotion, thumbnail, duration
 - [✅] Playback controls on each card
 - [✅] Filter by emotion
 - [✅] Sort by date created
+- [✅] Search by title/content
+- [✅] Empty states for no results
 
 **Component Structure:**
 ```
@@ -645,7 +647,7 @@ src/
 │       └── EmotionFilter.tsx
 ```
 
-#### 1.8.2 Story Replay Tracking
+#### 1.8.2 Story Replay Tracking ✅
 - [✅] Track replay_count on story record
 - [✅] Display "X of 3 free replays used"
 - [✅] Disable replay button after limit reached (show upgrade CTA)
@@ -654,9 +656,9 @@ src/
 
 ---
 
-### 1.9 Dashboard Page
+### 1.9 Dashboard Page ✅
 
-#### 1.9.1 User Dashboard
+#### 1.9.1 User Dashboard ✅
 - [✅] Create `/dashboard` page
 - [✅] Display user stats: total stories, total listening time
 - [✅] Display subscription tier (Free/Pro/Premium)

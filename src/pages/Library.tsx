@@ -6,8 +6,9 @@ import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/layout/Navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Story, EmotionMode } from '@/types/Story';
-import { BookOpen, Wand2, ArrowUpDown } from 'lucide-react';
+import { BookOpen, Wand2, ArrowUpDown, Search } from 'lucide-react';
 import { toast } from 'sonner';
 import { EmotionFilter } from '@/components/stories/EmotionFilter';
 import { StoryCard } from '@/components/stories/StoryCard';
@@ -28,6 +29,7 @@ export default function Library() {
   const [loading, setLoading] = useState(true);
   const [selectedEmotion, setSelectedEmotion] = useState<EmotionMode | 'all'>('all');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     if (user) {
@@ -77,6 +79,15 @@ export default function Library() {
       ? stories 
       : stories.filter(story => story.emotion === selectedEmotion);
     
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(story => 
+        story.title.toLowerCase().includes(query) ||
+        story.content.toLowerCase().includes(query)
+      );
+    }
+    
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case 'newest':
@@ -91,7 +102,7 @@ export default function Library() {
     });
     
     return sorted;
-  }, [stories, selectedEmotion, sortBy]);
+  }, [stories, selectedEmotion, sortBy, searchQuery]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -105,6 +116,20 @@ export default function Library() {
               Create New Story
             </Button>
           </div>
+
+          {/* Search Bar */}
+          {stories.length > 0 && (
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search stories by title or content..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          )}
 
           {/* Filters and Sort */}
           {stories.length > 0 && (
@@ -150,11 +175,15 @@ export default function Library() {
               </Button>
             </CardContent>
           </Card>
-        ) : filteredAndSortedStories.length === 0 && selectedEmotion !== 'all' ? (
+        ) : filteredAndSortedStories.length === 0 ? (
           <Card className="border-2 border-dashed">
             <CardContent className="p-12 text-center">
-              <p className="text-muted-foreground font-inter">
-                No stories found with this emotion. Try a different filter!
+              <BookOpen className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-muted-foreground font-inter mb-2">
+                {searchQuery.trim() ? 'No stories match your search.' : 'No stories found with this filter.'}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {searchQuery.trim() ? 'Try a different search term.' : 'Try a different emotion filter!'}
               </p>
             </CardContent>
           </Card>
