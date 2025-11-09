@@ -13,9 +13,13 @@ import { Wand2 } from 'lucide-react';
 
 const storyInputSchema = z.object({
   title: z.string().trim().min(1, 'Title is required').max(200, 'Title must be under 200 characters'),
-  content: z.string().trim().min(50, 'Story must be at least 50 characters').max(250000, 'Story is too long'),
+  content: z.string().trim().max(250000, 'Story is too long'),
   emotion: z.enum(['calm', 'gentle', 'playful', 'adventure', 'heartfelt']),
-});
+  hasFile: z.boolean(),
+}).refine(
+  (data) => data.hasFile || data.content.length >= 50,
+  { message: 'Either upload a file or enter at least 50 characters of story content', path: ['content'] }
+);
 
 export default function Generate() {
   const { user } = useAuth();
@@ -38,7 +42,12 @@ export default function Generate() {
 
     try {
       // Validate input
-      const validated = storyInputSchema.parse({ title, content, emotion });
+      const validated = storyInputSchema.parse({ 
+        title, 
+        content, 
+        emotion,
+        hasFile: !!selectedFile 
+      });
       setLoading(true);
 
       // Calculate word count
@@ -127,7 +136,11 @@ export default function Generate() {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={loading || !title.trim() || !content.trim()}
+                  disabled={
+                    loading || 
+                    !title.trim() || 
+                    (!selectedFile && content.trim().split(/\s+/).filter(Boolean).length < 50)
+                  }
                   className="flex-1"
                 >
                   {loading ? 'Saving...' : 'Generate Story'}

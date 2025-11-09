@@ -100,7 +100,10 @@ export function StoryUploader({
 
       {/* File Upload */}
       <div className="space-y-2">
-        <Label>Upload Story File (Optional)</Label>
+        <Label>Upload Story File</Label>
+        <p className="text-xs text-muted-foreground">
+          Upload a file or type your story below. PDF or image files accepted. Max 10MB.
+        </p>
         <Card
           className={`border-2 border-dashed transition-colors ${
             isDragging ? 'border-primary bg-primary/5' : 'border-border'
@@ -163,7 +166,7 @@ export function StoryUploader({
       {/* Text Input */}
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <Label htmlFor="story-content">Story Content</Label>
+          <Label htmlFor="story-content">Story Content (or upload a file above)</Label>
           <span className="text-xs text-muted-foreground">
             {wordCount.toLocaleString()} words · {charCount.toLocaleString()}/{MAX_CONTENT_LENGTH.toLocaleString()} chars
           </span>
