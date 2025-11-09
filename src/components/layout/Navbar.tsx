@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { BookOpen, Menu, LogOut } from "lucide-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSignOut = async () => {
     await signOut();
@@ -17,31 +20,51 @@ export const Navbar = () => {
   return <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <Container>
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 group">
+          <NavLink to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-warm flex items-center justify-center group-hover:scale-110 transition-transform">
               <BookOpen className="w-6 h-6 text-primary-foreground" />
             </div>
             <span className="font-fredoka text-2xl font-bold">StoryNest</span>
-          </Link>
+          </NavLink>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+            <NavLink 
+              to="/" 
+              className="font-inter text-foreground/70 hover:text-foreground transition-colors"
+              activeClassName="text-foreground font-semibold"
+            >
               Home
-            </Link>
-            <Link to="/pricing" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+            </NavLink>
+            <NavLink 
+              to="/pricing" 
+              className="font-inter text-foreground/70 hover:text-foreground transition-colors"
+              activeClassName="text-foreground font-semibold"
+            >
               Pricing
-            </Link>
+            </NavLink>
             {user && (
               <>
-                <Link to="/dashboard" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                <NavLink 
+                  to="/dashboard" 
+                  className="font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                >
                   Dashboard
-                </Link>
-                <Link to="/generate" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                </NavLink>
+                <NavLink 
+                  to="/generate" 
+                  className="font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                >
                   Generate
-                </Link>
-                <Link to="/library" className="font-inter text-foreground/70 hover:text-foreground transition-colors">
+                </NavLink>
+                <NavLink 
+                  to="/library" 
+                  className="font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                >
                   Library
-                </Link>
+                </NavLink>
               </>
             )}
             {user ? (
@@ -51,7 +74,7 @@ export const Navbar = () => {
               </Button>
             ) : (
               <Button asChild className="bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
-                <Link to="/auth">Get Started</Link>
+                <NavLink to="/auth">Get Started</NavLink>
               </Button>
             )}
           </div>
@@ -62,23 +85,48 @@ export const Navbar = () => {
         </div>
 
         {isOpen && <div className="md:hidden py-4 space-y-4 border-t border-border">
-            <Link to="/" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+            <NavLink 
+              to="/" 
+              className="block font-inter text-foreground/70 hover:text-foreground transition-colors"
+              activeClassName="text-foreground font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
               Home
-            </Link>
-            <Link to="/pricing" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+            </NavLink>
+            <NavLink 
+              to="/pricing" 
+              className="block font-inter text-foreground/70 hover:text-foreground transition-colors"
+              activeClassName="text-foreground font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
               Pricing
-            </Link>
+            </NavLink>
             {user && (
               <>
-                <Link to="/dashboard" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                <NavLink 
+                  to="/dashboard" 
+                  className="block font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                  onClick={() => setIsOpen(false)}
+                >
                   Dashboard
-                </Link>
-                <Link to="/generate" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                </NavLink>
+                <NavLink 
+                  to="/generate" 
+                  className="block font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                  onClick={() => setIsOpen(false)}
+                >
                   Generate
-                </Link>
-                <Link to="/library" className="block font-inter text-foreground/70 hover:text-foreground transition-colors">
+                </NavLink>
+                <NavLink 
+                  to="/library" 
+                  className="block font-inter text-foreground/70 hover:text-foreground transition-colors"
+                  activeClassName="text-foreground font-semibold"
+                  onClick={() => setIsOpen(false)}
+                >
                   Library
-                </Link>
+                </NavLink>
               </>
             )}
             {user ? (
@@ -88,7 +136,7 @@ export const Navbar = () => {
               </Button>
             ) : (
               <Button asChild className="w-full bg-gradient-warm hover:opacity-90 rounded-xl font-fredoka">
-                <Link to="/auth">Get Started</Link>
+                <NavLink to="/auth" onClick={() => setIsOpen(false)}>Get Started</NavLink>
               </Button>
             )}
           </div>}

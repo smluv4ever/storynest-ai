@@ -679,15 +679,15 @@ src/components/dashboard/
 
 ---
 
-### 1.10 Navigation & Routing
+### 1.10 Navigation & Routing ✅
 
-#### 1.10.1 Update Routes
-- [ ] Add `/auth` route
-- [ ] Add `/generate` route
-- [ ] Update `/library` route
-- [ ] Update `/dashboard` route
-- [ ] Protect routes with auth wrapper
-- [ ] Add 404 page
+#### 1.10.1 Update Routes ✅
+- [✅] Add `/auth` route
+- [✅] Add `/generate` route
+- [✅] Update `/library` route
+- [✅] Update `/dashboard` route
+- [✅] Protect routes with auth wrapper
+- [✅] Add 404 page
 
 **Routes Structure:**
 ```typescript
@@ -702,11 +702,11 @@ const routes = [
 ];
 ```
 
-#### 1.10.2 Update Navbar
-- [ ] Add login/logout buttons
-- [ ] Show user avatar/name when logged in
-- [ ] Active route highlighting
-- [ ] Mobile responsive menu
+#### 1.10.2 Update Navbar ✅
+- [✅] Add login/logout buttons
+- [✅] Show user avatar/name when logged in
+- [✅] Active route highlighting
+- [✅] Mobile responsive menu
 
 ---
 
