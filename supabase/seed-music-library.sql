@@ -1,4 +1,4 @@
--- Seed Music Library with 50 music tracks (10 per emotion mode) + 30 sound effects
+-- Seed Music Library with 50 music tracks (10 per emotion mode) + 100 sound effects
 -- Run this in Supabase SQL Editor to populate the audio_tracks table
 -- These use placeholder URLs - replace with actual Pixabay downloads uploaded to Storage
 
@@ -328,4 +328,293 @@ VALUES
   
   ('effect', 'Bicycle Bell', 'Bicycle bell ringing',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/bicycle-bell.mp3',
-   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['bicycle', 'bell', 'bike', 'ring'], 'pixabay', 'Public Domain', 1);
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['bicycle', 'bell', 'bike', 'ring'], 'pixabay', 'Public Domain', 1),
+  
+  -- Additional 70 sound effects (31-100)
+  ('effect', 'Train Whistle', 'Steam train whistle blowing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/train-whistle.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['train', 'whistle', 'locomotive', 'steam'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Airplane Fly', 'Airplane flying overhead',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/airplane-fly.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['airplane', 'fly', 'plane', 'sky'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'School Bell', 'School bell ringing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/school-bell.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['school', 'bell', 'ring', 'recess'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Applause', 'Crowd applauding',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/applause.mp3',
+   ARRAY['playful', 'heartfelt']::emotion_mode[], ARRAY['applause', 'clapping', 'crowd', 'cheer'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Baby Laugh', 'Baby laughing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/baby-laugh.mp3',
+   ARRAY['playful', 'heartfelt']::emotion_mode[], ARRAY['baby', 'laugh', 'giggle', 'infant'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Balloon Pop', 'Balloon popping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/balloon-pop.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['balloon', 'pop', 'burst', 'party'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Bees Buzzing', 'Bees buzzing around',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/bees-buzzing.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['bees', 'buzzing', 'insects', 'honey'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Boat Horn', 'Ship horn blast',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/boat-horn.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['boat', 'horn', 'ship', 'foghorn'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Bubbles Popping', 'Soap bubbles popping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/bubbles-popping.mp3',
+   ARRAY['playful', 'calm']::emotion_mode[], ARRAY['bubbles', 'pop', 'soap', 'bath'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Camera Shutter', 'Camera taking photo',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/camera-shutter.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['camera', 'photo', 'shutter', 'click'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Cartoon Boing', 'Bouncy spring sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/cartoon-boing.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['boing', 'spring', 'bounce', 'cartoon'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Cartoon Whistle', 'Sliding whistle sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/cartoon-whistle.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['whistle', 'slide', 'cartoon', 'funny'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Cash Register', 'Cash register ding',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/cash-register.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['cash', 'register', 'ding', 'shop'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Chain Rattle', 'Metal chains rattling',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/chain-rattle.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['chain', 'rattle', 'metal', 'clink'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Choir Singing', 'Angelic choir vocals',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/choir-singing.mp3',
+   ARRAY['heartfelt', 'calm']::emotion_mode[], ARRAY['choir', 'singing', 'angelic', 'voices'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Coin Drop', 'Coin dropping on surface',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/coin-drop.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['coin', 'drop', 'money', 'clink'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Cough', 'Person coughing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/cough.mp3',
+   ARRAY['gentle', 'heartfelt']::emotion_mode[], ARRAY['cough', 'sick', 'throat', 'person'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Cow Moo', 'Cow mooing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/public/audio-tracks/effects/cow-moo.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['cow', 'moo', 'farm', 'animal'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Drum Roll', 'Snare drum roll',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/drum-roll.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['drum', 'roll', 'snare', 'suspense'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Duck Quack', 'Duck quacking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/duck-quack.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['duck', 'quack', 'bird', 'pond'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Elephant Trumpet', 'Elephant trumpeting',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/elephant-trumpet.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['elephant', 'trumpet', 'animal', 'wild'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Fireworks Burst', 'Fireworks exploding',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/fireworks-burst.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['fireworks', 'burst', 'explosion', 'celebration'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Frog Croak', 'Frog croaking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/frog-croak.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['frog', 'croak', 'pond', 'animal'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Glass Break', 'Glass shattering',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/glass-break.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['glass', 'break', 'shatter', 'crash'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Gong', 'Large gong strike',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/gong.mp3',
+   ARRAY['adventure', 'gentle']::emotion_mode[], ARRAY['gong', 'strike', 'metal', 'resonant'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Hammer Nail', 'Hammering a nail',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/hammer-nail.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['hammer', 'nail', 'build', 'construction'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Harp Glissando', 'Harp upward sweep',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/harp-glissando.mp3',
+   ARRAY['heartfelt', 'playful']::emotion_mode[], ARRAY['harp', 'glissando', 'sweep', 'magical'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Heartbeat', 'Human heartbeat rhythm',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/heartbeat.mp3',
+   ARRAY['heartfelt', 'adventure']::emotion_mode[], ARRAY['heartbeat', 'pulse', 'rhythm', 'heart'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Helicopter', 'Helicopter flying',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/helicopter.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['helicopter', 'rotor', 'fly', 'aircraft'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Hiccup', 'Person hiccuping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/hiccup.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['hiccup', 'person', 'funny', 'sound'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Ice Cream Truck', 'Ice cream truck jingle',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/ice-cream-truck.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['ice cream', 'truck', 'jingle', 'music'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Keyboard Typing', 'Computer keyboard typing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/keyboard-typing.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['keyboard', 'typing', 'computer', 'keys'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Kiss', 'Kissing sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/kiss.mp3',
+   ARRAY['heartfelt', 'playful']::emotion_mode[], ARRAY['kiss', 'smooch', 'love', 'affection'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Laser Zap', 'Sci-fi laser sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/laser-zap.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['laser', 'zap', 'scifi', 'beam'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Lion Roar', 'Lion roaring',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/lion-roar.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['lion', 'roar', 'animal', 'wild'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Match Strike', 'Striking a match',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/match-strike.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['match', 'strike', 'fire', 'light'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Monkey Chatter', 'Monkey chattering',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/monkey-chatter.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['monkey', 'chatter', 'jungle', 'animal'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Motorcycle Rev', 'Motorcycle engine revving',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/motorcycle-rev.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['motorcycle', 'rev', 'engine', 'vehicle'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Mouse Squeak', 'Mouse squeaking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/mouse-squeak.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['mouse', 'squeak', 'animal', 'rodent'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Paper Crumple', 'Paper being crumpled',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/paper-crumple.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['paper', 'crumple', 'wrinkle', 'crush'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Pig Oink', 'Pig oinking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/pig-oink.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['pig', 'oink', 'farm', 'animal'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Phone Ring Old', 'Vintage telephone ringing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/phone-ring-old.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['phone', 'ring', 'telephone', 'vintage'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Piano Keys', 'Piano keys playing scale',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/piano-keys.mp3',
+   ARRAY['gentle', 'heartfelt']::emotion_mode[], ARRAY['piano', 'keys', 'scale', 'music'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Popcorn Popping', 'Popcorn popping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/popcorn-popping.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['popcorn', 'pop', 'cooking', 'snack'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Robot Voice', 'Robotic speech sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/robot-voice.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['robot', 'voice', 'mechanical', 'scifi'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Rocket Launch', 'Rocket taking off',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/rocket-launch.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['rocket', 'launch', 'space', 'blast'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Rooster Crow', 'Rooster crowing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/rooster-crow.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['rooster', 'crow', 'morning', 'farm'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Running Feet', 'Running footsteps',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/running-feet.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['running', 'feet', 'footsteps', 'chase'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Saw Cutting', 'Saw cutting wood',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/saw-cutting.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['saw', 'cutting', 'wood', 'tool'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Scissors Snip', 'Scissors cutting',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/scissors-snip.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['scissors', 'snip', 'cut', 'craft'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Seagull Cry', 'Seagull calling',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/seagull-cry.mp3',
+   ARRAY['adventure', 'gentle']::emotion_mode[], ARRAY['seagull', 'cry', 'bird', 'beach'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Sheep Baa', 'Sheep bleating',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/sheep-baa.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['sheep', 'baa', 'bleat', 'farm'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Siren Police', 'Police siren wailing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/siren-police.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['siren', 'police', 'emergency', 'wail'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Sneeze', 'Person sneezing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/sneeze.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['sneeze', 'person', 'achoo', 'sick'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Snoring', 'Person snoring',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/snoring.mp3',
+   ARRAY['calm', 'playful']::emotion_mode[], ARRAY['snoring', 'sleep', 'snore', 'person'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Spaceship Whoosh', 'Spaceship passing by',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/spaceship-whoosh.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['spaceship', 'whoosh', 'scifi', 'fly'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Splash Big', 'Large splash in water',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/splash-big.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['splash', 'water', 'big', 'dive'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Spring Bounce', 'Metal spring bouncing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/spring-bounce.mp3',
+   ARRAY['playful']::emotion_mode[], ARRAY['spring', 'bounce', 'metal', 'coil'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Stairs Creaking', 'Creaky stairs',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/stairs-creaking.mp3',
+   ARRAY['adventure', 'gentle']::emotion_mode[], ARRAY['stairs', 'creak', 'wood', 'steps'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Stomach Growl', 'Stomach rumbling',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/stomach-growl.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['stomach', 'growl', 'hungry', 'rumble'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Trumpet Fanfare', 'Royal trumpet fanfare',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/trumpet-fanfare.mp3',
+   ARRAY['adventure', 'heartfelt']::emotion_mode[], ARRAY['trumpet', 'fanfare', 'royal', 'announcement'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Typewriter', 'Manual typewriter typing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/typewriter.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['typewriter', 'typing', 'vintage', 'keys'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Vacuum Cleaner', 'Vacuum cleaner running',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/vacuum-cleaner.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['vacuum', 'cleaner', 'cleaning', 'appliance'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Violin Screech', 'Violin screeching',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/violin-screech.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['violin', 'screech', 'strings', 'bad'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Waterfall', 'Waterfall flowing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/waterfall.mp3',
+   ARRAY['calm', 'adventure']::emotion_mode[], ARRAY['waterfall', 'water', 'flowing', 'nature'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Whale Song', 'Whale singing underwater',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/whale-song.mp3',
+   ARRAY['calm', 'heartfelt']::emotion_mode[], ARRAY['whale', 'song', 'ocean', 'underwater'], 'pixabay', 'Public Domain', 7),
+  
+  ('effect', 'Whip Crack', 'Whip cracking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/whip-crack.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['whip', 'crack', 'snap', 'leather'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Wolf Howl', 'Wolf howling at moon',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/wolf-howl.mp3',
+   ARRAY['adventure', 'calm']::emotion_mode[], ARRAY['wolf', 'howl', 'night', 'animal'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Wood Chop', 'Axe chopping wood',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/wood-chop.mp3',
+   ARRAY['adventure', 'gentle']::emotion_mode[], ARRAY['wood', 'chop', 'axe', 'cut'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Yawn', 'Person yawning',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/yawn.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['yawn', 'tired', 'sleepy', 'person'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Zip Zipper', 'Zipper zipping',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/zip-zipper.mp3',
+   ARRAY['gentle']::emotion_mode[], ARRAY['zipper', 'zip', 'clothing', 'fasten'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Zombie Groan', 'Zombie groaning',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/zombie-groan.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['zombie', 'groan', 'undead', 'monster'], 'pixabay', 'Public Domain', 3);
