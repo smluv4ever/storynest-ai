@@ -4,6 +4,8 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Container } from '@/components/ui/container';
+import { Navbar } from '@/components/layout/Navbar';
 import { StoryUploader } from '@/components/stories/StoryUploader';
 import { EmotionalDial } from '@/components/stories/EmotionalDial';
 import { EmotionMode } from '@/types/Story';
@@ -106,7 +108,8 @@ export default function Generate() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-      <div className="container max-w-4xl py-8 px-4">
+      <Navbar />
+      <Container className="max-w-4xl py-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl font-fredoka flex items-center gap-2">
@@ -162,7 +165,7 @@ export default function Generate() {
             </form>
           </CardContent>
         </Card>
-      </div>
+      </Container>
     </div>
   );
 }
