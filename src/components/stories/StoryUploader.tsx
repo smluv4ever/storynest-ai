@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Upload, FileText, X } from 'lucide-react';
 import { toast } from 'sonner';
+import { extractText } from '@/lib/pdfExtractor';
 
 interface StoryUploaderProps {
   title: string;
@@ -38,7 +39,7 @@ export function StoryUploader({
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const charCount = content.length;
 
-  const handleFileChange = (file: File | null) => {
+  const handleFileChange = async (file: File | null) => {
     if (!file) {
       setSelectedFile(null);
       onFileSelect?.(null);
@@ -59,7 +60,22 @@ export function StoryUploader({
 
     setSelectedFile(file);
     onFileSelect?.(file);
-    toast.success(`File "${file.name}" selected`);
+    
+    // Try to extract text from file
+    try {
+      toast.loading('Extracting text from file...');
+      const extractedText = await extractText(file);
+      
+      if (extractedText && extractedText.trim()) {
+        onContentChange(extractedText);
+        toast.success(`File "${file.name}" loaded successfully`);
+      } else {
+        toast.info(`File selected: "${file.name}"`);
+      }
+    } catch (error) {
+      console.error('Text extraction error:', error);
+      toast.error('Could not extract text from file. Please type your story below.');
+    }
   };
 
   const handleDrop = (e: React.DragEvent) => {

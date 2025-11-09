@@ -16,6 +16,19 @@ Deno.serve(async (req) => {
   }
 
   try {
+    // Create admin client with service role key to bypass RLS
+    const supabaseAdmin = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    );
+
+    // Create regular client for auth verification
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -48,8 +61,8 @@ Deno.serve(async (req) => {
 
     console.log(`[generate-story-audio] Processing story: ${storyId} for user: ${user.id}`);
 
-    // Fetch the story
-    const { data: story, error: fetchError } = await supabaseClient
+    // Fetch the story using admin client (bypasses RLS for immediate read after insert)
+    const { data: story, error: fetchError } = await supabaseAdmin
       .from('stories')
       .select('*')
       .eq('id', storyId)
@@ -57,11 +70,12 @@ Deno.serve(async (req) => {
       .single();
 
     if (fetchError || !story) {
+      console.error('[generate-story-audio] Fetch error:', fetchError);
       throw new Error('Story not found or unauthorized');
     }
 
     // Update status to processing
-    await supabaseClient
+    await supabaseAdmin
       .from('stories')
       .update({ status: 'processing' })
       .eq('id', storyId);
@@ -87,7 +101,7 @@ Deno.serve(async (req) => {
     console.log(`[generate-story-audio] Mock results - Narrator: ${narratorDetected}, Characters: ${characters.length}, Duration: ${estimatedDuration}s`);
 
     // Update story with mock results
-    const { error: updateError } = await supabaseClient
+    const { error: updateError } = await supabaseAdmin
       .from('stories')
       .update({
         status: 'completed',
