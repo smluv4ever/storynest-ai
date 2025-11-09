@@ -611,11 +611,12 @@ interface PlayerState {
 }
 ```
 
-#### 1.7.2 Audio Mixer Logic (Client-side MVP)
-- [ ] Create `audioMixer.ts` utility
-- [ ] Layer voice audio with background music
-- [ ] Volume balancing
-- [ ] Crossfade transitions
+#### 1.8.2 Audio Mixer Logic (Client-side MVP)
+- [✅] Create `audioMixer.ts` utility
+- [✅] Layer voice audio with background music
+- [✅] Volume balancing (voice vs music)
+- [✅] Crossfade transitions
+- [✅] Toggle music on/off dynamically
 
 **Reference:** `masterplan.md` - Smart Audio Mixer
 
