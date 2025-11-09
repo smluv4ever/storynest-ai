@@ -646,29 +646,33 @@ src/
 ```
 
 #### 1.8.2 Story Replay Tracking
-- [ ] Track replay_count on story record
-- [ ] Display "X of 3 free replays used"
-- [ ] Disable replay button after 3 (show upgrade CTA)
-- [ ] "Reuse Voice" button to copy voice settings to new story
+- [✅] Track replay_count on story record
+- [✅] Display "X of 3 free replays used"
+- [✅] Disable replay button after limit reached (show upgrade CTA)
+- [✅] "Regenerate" button in PreviewPlayer
+- [✅] Premium upsell alert when replays exhausted
 
 ---
 
 ### 1.9 Dashboard Page
 
 #### 1.9.1 User Dashboard
-- [ ] Create `/dashboard` page
-- [ ] Display user stats: total stories, total listening time
-- [ ] Recent stories list
-- [ ] Quick action: "Create New Story"
-- [ ] Settings link
+- [✅] Create `/dashboard` page
+- [✅] Display user stats: total stories, total listening time
+- [✅] Display subscription tier (Free/Pro/Premium)
+- [✅] Display words used vs. words limit with progress bar
+- [✅] Recent stories list (5 most recent)
+- [✅] Quick action cards: "Create New Story", "Library", "Upgrade", "Settings"
+- [✅] Empty state for users with no stories
+- [ ] Connect to actual Stripe subscription data (currently mocked as 'free')
 
 **Component Structure:**
 ```
 src/pages/Dashboard.tsx
 src/components/dashboard/
-├── StatsCards.tsx
-├── RecentStories.tsx
-└── QuickActions.tsx
+├── StatsCards.tsx (subscription, stories, time, words usage)
+├── RecentStories.tsx (last 5 stories)
+└── QuickActions.tsx (quick navigation buttons)
 ```
 
 ---
