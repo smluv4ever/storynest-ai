@@ -1,20 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, RotateCcw } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import { Story } from '@/types/Story';
+import { ReplayIndicator } from '@/components/stories/ReplayIndicator';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface PreviewPlayerProps {
   audioUrl: string | null;
   backgroundMusicEnabled?: boolean;
+  story?: Story;
   onPlayStateChange?: (isPlaying: boolean) => void;
+  onReplayRequested?: () => void;
 }
 
 export function PreviewPlayer({ 
   audioUrl, 
   backgroundMusicEnabled = true,
-  onPlayStateChange 
+  story,
+  onPlayStateChange,
+  onReplayRequested
 }: PreviewPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -90,6 +98,38 @@ export function PreviewPlayer({
     setIsMuted(!isMuted);
   };
 
+  const handleReplay = async () => {
+    if (!story) return;
+    
+    const replaysRemaining = story.max_free_replays - story.replay_count;
+    
+    if (replaysRemaining <= 0) {
+      toast.error('No free replays remaining', {
+        description: 'Upgrade to Premium for unlimited regenerations'
+      });
+      return;
+    }
+
+    try {
+      // Increment replay count
+      const { error } = await supabase
+        .from('stories')
+        .update({ replay_count: story.replay_count + 1 })
+        .eq('id', story.id);
+
+      if (error) throw error;
+
+      toast.success('Regenerating story...', {
+        description: `${replaysRemaining - 1} free replays remaining`
+      });
+
+      onReplayRequested?.();
+    } catch (error) {
+      console.error('Replay error:', error);
+      toast.error('Failed to regenerate story');
+    }
+  };
+
   const formatTime = (seconds: number) => {
     if (!isFinite(seconds)) return '0:00';
     const mins = Math.floor(seconds / 60);
@@ -108,6 +148,9 @@ export function PreviewPlayer({
   return (
     <div className="w-full space-y-4 p-4 bg-card border rounded-lg">
       <audio ref={audioRef} src={effectiveAudioUrl} preload="metadata" />
+      
+      {/* Replay Indicator - Full version */}
+      {story && <ReplayIndicator story={story} />}
       
       {/* Progress Bar */}
       <div className="space-y-2">
@@ -164,7 +207,7 @@ export function PreviewPlayer({
         </div>
 
         {/* Music Toggle */}
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2">
           <Switch
             id="music-toggle"
             checked={musicEnabled}
@@ -174,6 +217,20 @@ export function PreviewPlayer({
             Background Music
           </Label>
         </div>
+
+        {/* Replay Button */}
+        {story && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleReplay}
+            disabled={story.max_free_replays - story.replay_count <= 0}
+            className="gap-2 ml-auto"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Regenerate
+          </Button>
+        )}
       </div>
 
       {/* Info */}

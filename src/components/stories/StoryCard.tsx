@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, Clock, Music } from 'lucide-react';
 import { PreviewPlayer } from '@/components/audio/PreviewPlayer';
+import { ReplayIndicator } from '@/components/stories/ReplayIndicator';
 
 const emotionEmojis: Record<string, string> = {
   calm: '🌙',
@@ -59,11 +60,15 @@ export function StoryCard({ story }: StoryCardProps) {
           )}
         </div>
 
+        {/* Replay Tracking Indicator */}
+        <ReplayIndicator story={story} compact />
+
         {/* Audio Player - shown only for completed stories */}
         {story.status === 'completed' && (
           <PreviewPlayer 
             audioUrl={story.audio_url}
             backgroundMusicEnabled={story.background_music_enabled}
+            story={story}
           />
         )}
 
