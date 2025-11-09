@@ -496,12 +496,12 @@ const storyInputSchema = z.object({
 ### 1.6 Story Generation (Mock for MVP)
 
 #### 1.6.1 Mock AI Processing Edge Function
-- [ ] Create edge function `generate-story-audio`
-- [ ] Accept: story content, emotion, title
-- [ ] Mock processing delay (3-5 seconds)
-- [ ] Return placeholder audio URL
-- [ ] Detect narrator and characters (simple regex for MVP)
-- [ ] Return mock metadata
+- [✅] Create edge function `generate-story-audio`
+- [✅] Mock narrator detection (dialogue analysis)
+- [✅] Mock character extraction (from quoted text)
+- [✅] Mock music theme selection by emotion
+- [✅] Update story status (draft → processing → completed)
+- [✅] Store processing metadata (narrator, characters, duration estimate)
 
 **Edge Function Structure:**
 ```typescript
@@ -561,16 +561,27 @@ verify_jwt = true
 ```
 
 #### 1.6.2 Story Generation Flow
-- [ ] Create `useStoryGeneration` hook
-- [ ] Insert story record with status='processing'
-- [ ] Call edge function
-- [ ] Update story with audio URL and metadata
-- [ ] Handle errors gracefully
-- [ ] Show loading states ("Mixing voices and melodies...")
+- [✅] Insert story record with status='draft'
+- [✅] Call edge function with story ID
+- [✅] Edge function updates story status and metadata
+- [✅] Handle errors gracefully
+- [✅] Show loading states and success feedback
 
 ---
 
-### 1.7 Audio Playback & Preview
+### 1.7 Library & Playback UI
+
+#### 1.7.1 Library Page - Story Grid
+- [✅] Display user stories in responsive grid
+- [✅] Story cards with title, emotion, status badges
+- [✅] Show metadata: word count, duration, music theme
+- [✅] Display narrator and character information
+- [✅] Status-based UI (draft, processing, completed, failed)
+- [✅] "Create New Story" call-to-action for empty state
+
+---
+
+### 1.8 Audio Playback & Preview
 
 #### 1.7.1 Preview Player Component
 - [ ] Create PreviewPlayer component

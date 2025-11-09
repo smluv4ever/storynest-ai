@@ -60,7 +60,19 @@ export default function Generate() {
 
       if (error) throw error;
 
-      toast.success('Story saved! Generation will be added in next phase.');
+      toast.success('Story created! Generating audio...');
+
+      // Call edge function to process story
+      const { error: generateError } = await supabase.functions.invoke('generate-story-audio', {
+        body: { storyId: story.id },
+      });
+
+      if (generateError) {
+        console.error('Generation error:', generateError);
+        toast.error('Audio generation failed, but story was saved');
+      } else {
+        toast.success('Story audio generated successfully!');
+      }
       
       // Reset form
       setTitle('');
@@ -69,7 +81,7 @@ export default function Generate() {
       setSelectedFile(null);
 
       // Navigate to library
-      navigate('/library');
+      setTimeout(() => navigate('/library'), 1000);
     } catch (err) {
       if (err instanceof z.ZodError) {
         toast.error(err.errors[0].message);
@@ -132,7 +144,7 @@ export default function Generate() {
 
               {/* Info */}
               <p className="text-xs text-muted-foreground text-center">
-                Audio generation will be implemented in the next phase. For now, your story will be saved to your library.
+                Mock AI processing simulates voice synthesis and music selection. Real AI integration coming in V1.
               </p>
             </form>
           </CardContent>

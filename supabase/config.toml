@@ -1,1 +1,4 @@
 project_id = "rlrgntjscgoiblvrhzht"
+
+[functions.generate-story-audio]
+verify_jwt = false
