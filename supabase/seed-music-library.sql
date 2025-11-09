@@ -1,4 +1,4 @@
--- Seed Music Library with 50 tracks (10 per emotion mode)
+-- Seed Music Library with 50 music tracks (10 per emotion mode) + 30 sound effects
 -- Run this in Supabase SQL Editor to populate the audio_tracks table
 -- These use placeholder URLs - replace with actual Pixabay downloads uploaded to Storage
 
@@ -207,4 +207,125 @@ VALUES
   
   ('music', 'Sweet Dreams', 'Comforting lullaby with strings',
    'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/heartfelt/sweet-dreams.mp3',
-   ARRAY['heartfelt']::emotion_mode[], ARRAY['lullaby', 'comforting', 'strings'], 'pixabay', 'Public Domain', 182);
+   ARRAY['heartfelt']::emotion_mode[], ARRAY['lullaby', 'comforting', 'strings'], 'pixabay', 'Public Domain', 182),
+
+  -- SOUND EFFECTS - 30 effects for dynamic story moments
+  ('effect', 'Door Creak Open', 'Old wooden door opening slowly',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/door-creak-open.mp3',
+   ARRAY['adventure', 'heartfelt']::emotion_mode[], ARRAY['door', 'creak', 'open', 'wooden'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Door Creak Close', 'Old wooden door closing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/door-creak-close.mp3',
+   ARRAY['adventure', 'heartfelt']::emotion_mode[], ARRAY['door', 'creak', 'close', 'wooden'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Footsteps Wood', 'Walking on wooden floor',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/footsteps-wood.mp3',
+   ARRAY['gentle', 'adventure', 'heartfelt']::emotion_mode[], ARRAY['footsteps', 'walking', 'wood', 'floor'], 'pixabay', 'Public Domain', 4),
+  
+  ('effect', 'Footsteps Grass', 'Walking through grass',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/footsteps-grass.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['footsteps', 'grass', 'walking', 'outdoor'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Thunder Rumble', 'Deep thunder sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/thunder-rumble.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['thunder', 'storm', 'weather', 'rain'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Rain Light', 'Gentle rainfall',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/rain-light.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['rain', 'gentle', 'weather', 'water'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Rain Heavy', 'Heavy downpour',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/rain-heavy.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['rain', 'heavy', 'storm', 'downpour'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Birds Chirping', 'Morning birds singing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/birds-chirping.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['birds', 'chirping', 'morning', 'nature'], 'pixabay', 'Public Domain', 7),
+  
+  ('effect', 'Owl Hoot', 'Owl hooting at night',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/owl-hoot.mp3',
+   ARRAY['calm', 'adventure']::emotion_mode[], ARRAY['owl', 'night', 'hoot', 'bird'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Water Splash', 'Water splashing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/water-splash.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['water', 'splash', 'swim', 'pool'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Stream Flowing', 'Gentle stream water',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/stream-flowing.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['stream', 'water', 'flowing', 'nature'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Wind Howl', 'Strong wind blowing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/wind-howl.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['wind', 'howl', 'weather', 'storm'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Wind Gentle', 'Soft breeze',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/wind-gentle.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['wind', 'breeze', 'gentle', 'soft'], 'pixabay', 'Public Domain', 6),
+  
+  ('effect', 'Fire Crackling', 'Campfire or fireplace',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/fire-crackling.mp3',
+   ARRAY['calm', 'gentle', 'heartfelt']::emotion_mode[], ARRAY['fire', 'crackling', 'campfire', 'fireplace'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Clock Ticking', 'Clock ticking sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/clock-ticking.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['clock', 'ticking', 'time', 'tick'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Bell Ring', 'Single bell chime',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/bell-ring.mp3',
+   ARRAY['gentle', 'playful', 'heartfelt']::emotion_mode[], ARRAY['bell', 'chime', 'ring', 'ding'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Horse Neigh', 'Horse neighing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/horse-neigh.mp3',
+   ARRAY['adventure', 'playful']::emotion_mode[], ARRAY['horse', 'neigh', 'animal', 'farm'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Dog Bark', 'Dog barking',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/dog-bark.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['dog', 'bark', 'pet', 'animal'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Cat Meow', 'Cat meowing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/cat-meow.mp3',
+   ARRAY['gentle', 'playful']::emotion_mode[], ARRAY['cat', 'meow', 'pet', 'animal'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Waves Ocean', 'Ocean waves crashing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/waves-ocean.mp3',
+   ARRAY['calm', 'adventure']::emotion_mode[], ARRAY['waves', 'ocean', 'sea', 'beach'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Leaves Rustling', 'Leaves rustling in wind',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/leaves-rustling.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['leaves', 'rustling', 'wind', 'nature'], 'pixabay', 'Public Domain', 5),
+  
+  ('effect', 'Crow Caw', 'Crow cawing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/crow-caw.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['crow', 'caw', 'bird', 'raven'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Crickets Night', 'Nighttime crickets',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/crickets-night.mp3',
+   ARRAY['calm', 'gentle']::emotion_mode[], ARRAY['crickets', 'night', 'insects', 'evening'], 'pixabay', 'Public Domain', 8),
+  
+  ('effect', 'Magic Sparkle', 'Magical sparkle sound',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/magic-sparkle.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['magic', 'sparkle', 'fantasy', 'twinkle'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Sword Clash', 'Swords clashing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/sword-clash.mp3',
+   ARRAY['adventure']::emotion_mode[], ARRAY['sword', 'clash', 'fight', 'metal'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Page Turn', 'Book page turning',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/page-turn.mp3',
+   ARRAY['gentle', 'heartfelt']::emotion_mode[], ARRAY['page', 'turn', 'book', 'paper'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Giggle Child', 'Child giggling',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/giggle-child.mp3',
+   ARRAY['playful', 'heartfelt']::emotion_mode[], ARRAY['giggle', 'laugh', 'child', 'happy'], 'pixabay', 'Public Domain', 3),
+  
+  ('effect', 'Knock Door', 'Knocking on door',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/knock-door.mp3',
+   ARRAY['gentle', 'adventure']::emotion_mode[], ARRAY['knock', 'door', 'tap', 'entrance'], 'pixabay', 'Public Domain', 2),
+  
+  ('effect', 'Car Horn', 'Car horn beep',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/car-horn.mp3',
+   ARRAY['playful', 'adventure']::emotion_mode[], ARRAY['car', 'horn', 'beep', 'vehicle'], 'pixabay', 'Public Domain', 1),
+  
+  ('effect', 'Bicycle Bell', 'Bicycle bell ringing',
+   'https://rlrgntjscgoiblvrhzht.supabase.co/storage/v1/object/public/audio-tracks/effects/bicycle-bell.mp3',
+   ARRAY['playful', 'gentle']::emotion_mode[], ARRAY['bicycle', 'bell', 'bike', 'ring'], 'pixabay', 'Public Domain', 1);
