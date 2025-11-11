@@ -34,7 +34,7 @@ export const Benefits = () => {
             Why families love{" "}
             <span className="bg-gradient-warm bg-clip-text text-transparent">StoryNest</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-inter">Each story burst to life with expressive voices, captivating music, and vivid sound effects</p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-inter">Each story burst to life with expressive voices and captivating music</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
